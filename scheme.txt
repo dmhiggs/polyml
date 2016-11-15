@@ -1,6 +1,3 @@
-Dara Higgs
-CPTS 355
-
 
 nth - returns nth element of list
 >(define (nth inputlist index)
