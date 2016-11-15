@@ -1,5 +1,5 @@
 
-(*in_list - 10%*)
+(*in_list*)
 
 (*This function should return true if the first argument is a member 
 of the second argument and have type (''a * ''a list) -> bool.*)
@@ -12,7 +12,7 @@ fun in_list (x, []) = false
 
 
 
-(*intersection - 10%
+(*intersection
 
 This function should return the intersection of two lists, 
 and have type ''a list * ''a list -> ''a list. . 
@@ -32,7 +32,7 @@ fun intersection ([],[]) = []
 
 
 
-(*union - 10%
+(*union
 
 This function should return the union of two lists. 
 Each value should appear in the output list only once but the order does not matter. 
@@ -51,7 +51,7 @@ fun union [] [] = []
 
 
 
-(*filter and reverse - 10%
+(*filter and reverse
 
 filter takes as its first argument a one-argument function, 
 called a predicate, which returns true or false, 
@@ -75,7 +75,7 @@ fun filter pred [] = []
 
 
 
-(*groupNl and groupNr - 10%
+(*groupNl and groupNr
 
 These functions take two arguments. 
 The first is an integer and the second is a list. 
@@ -144,7 +144,7 @@ fun groupNr x [] = [] : int list list
 
 
 
-(*mergesort - 15%
+(*mergesort
 
 This function takes two arguments. 
 The first argument is a function called a comparator and 
@@ -176,7 +176,7 @@ fun mergesort comp [] =[]
   | mergesort comp (z::zs) = split z (z::zs) [] [] [];
 
 
-(*Practice with datatypes - 15%
+(*Practice with datatypes
 
 Define an ML datatype datatype either = ImAString of string | ImAnInt of int.
 Define an ML datatype named eitherTree for binary trees containing values of type 
@@ -262,15 +262,5 @@ fun treeToString f (LEAF t) = f t
 	nodes f t
 	end;
 
-(* Comment: not exactly right. -5. How about *)
 fun treeToString (LEAF s) = s
   | treeToString (NODE l) = "(" ^ String.concat (map treeToString l) ^ ")"
-
-
-
-(* Comment: missing perms, -5 *)
-
-(* raw score: 90
- * delay 5 days: 25% penalty
- * final score: 67.5
- *)
