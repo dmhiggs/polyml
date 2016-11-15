@@ -1,0 +1,76 @@
+Dara Higgs
+CPTS 355
+
+
+nth - returns nth element of list
+>(define (nth inputlist index)
+    (cond
+      ((zero? index) (car inputlist))
+      (#t (nth (cdr inputlist) (- index 1)))
+      ))
+
+
+repl - returns list with index value changed to new value
+> (define (repl inputlist index value)
+    (cond
+      ((zero? index) (cons value (cdr inputlist)))
+      (#t (cons (car inputlist) (repl (cdr inputlist) (- index 1) value)))
+      ))
+
+
+range - make python range function
+> (define (range min max)
+    (cond
+      ((>= min max) '())
+      (#t (cons min (range (+ min 1) max)))
+      ))
+
+
+merge2 - merge two lists of sorted ints into one sorted list
+> (define (merge2 l1 l2)
+    (cond 
+      ((and (null? l1) (null? l2)) '())
+      ((null? l1) l2)
+      ((null? l2) l1)
+      (#t 
+       (cond
+         ((eq? (min (car l1) (car l2)) (car l1)) (cons (car l1) (merge2 (cdr l1) l2)))
+         (#t (cons (car l2) (merge2 l1 (cdr l2))))
+         ))
+      ))
+
+
+fold - def in class
+> (define (fold fcombine basecase L)
+    (cond
+      ((null? L) basecase)
+      (#t (fcombine (car L) (fold fcombine basecase (cdr L))))
+      ))
+
+
+mergeN - use merge2 and fold to take list of lists and return in order list of elements
+(define (mergeN listoflists)
+    (cond
+      ((null? listoflists) '())
+      (#t (fold merge2 '() listoflists))
+      ))
+
+
+unzip - takes list of 2-element lists and turns it into a list of 2 lists
+(define (unzip lists)
+    (cond
+      ((null? lists) '())
+      (#t 
+       (list 
+        (fold cons (cdr lists) (list (car(car lists))))
+        (fold cons (cdr lists) (list (car(cdr(car lists)))))
+        ))
+      ))
+(define (unzip lists)
+    (cond
+      ((null? lists) '())
+      (#t  
+       (fold cons (unzip(cdr lists)) (car lists))
+       (fold cons (unzip(cdr lists)) (cdr(car lists)))
+        )
+      ))
